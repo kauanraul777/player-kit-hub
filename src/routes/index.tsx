@@ -20,6 +20,7 @@ import francaAway from "@/assets/franca-away.png";
 import portugalHome from "@/assets/portugal-home.png";
 import portugalAway from "@/assets/portugal-away.png";
 import alemanhaHome from "@/assets/alemanha-home.png";
+import alemanhaAway from "@/assets/alemanha-away.png";
 
 import { RecentPurchasePopup } from "@/components/RecentPurchasePopup";
 
