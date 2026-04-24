@@ -27,17 +27,17 @@ import { RecentPurchasePopup } from "@/components/RecentPurchasePopup";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FutClassics — Camisas Modelo Jogador Tailandesas Premium" },
+      { title: "FutFanaticos — Camisas Modelo Jogador Copa 2026" },
       {
         name: "description",
         content:
-          "Loja oficial de camisas tailandesas modelo jogador das principais seleções. Brasil, Argentina, França, Portugal e Alemanha. Frete para todo Brasil.",
+          "Loja oficial de camisas modelo jogador das principais seleções para a Copa do Mundo 2026. Brasil, Argentina, França, Portugal e Alemanha. Frete para todo Brasil.",
       },
-      { property: "og:title", content: "FutClassics — Camisas das Seleções" },
+      { property: "og:title", content: "FutFanaticos — Camisas das Seleções Copa 2026" },
       {
         property: "og:description",
         content:
-          "Camisas modelo jogador premium. Qualidade, caimento perfeito e preço acessível.",
+          "Modelos jogador com qualidade premium das principais seleções. Caimento perfeito e preço acessível.",
       },
     ],
   }),
