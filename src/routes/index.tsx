@@ -313,7 +313,7 @@ function StorePage() {
               Aviso legal: produto não oficial, inspirado em camisas de seleções de futebol.
               Marcas e escudos pertencem aos seus respectivos proprietários.
             </p>
-            <p>© {new Date().getFullYear()} FutClassics · CNPJ 00.000.000/0001-00</p>
+            <p>© {new Date().getFullYear()} FutFanaticos · CNPJ 00.000.000/0001-00</p>
           </div>
         </div>
       </footer>
