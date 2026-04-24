@@ -99,7 +99,7 @@ function StorePage() {
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="/" className="font-display text-2xl tracking-wide text-deep">
-            FUT<span className="text-success">CLASSICS</span>
+            FUT<span className="text-success">FANATICOS</span>
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm text-foreground/80">
             <button onClick={scrollToProducts} className="hover:text-deep transition-colors">Produtos</button>
