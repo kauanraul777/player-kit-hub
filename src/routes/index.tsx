@@ -120,14 +120,14 @@ function StorePage() {
       <section className="relative bg-gradient-to-b from-background to-muted/40 border-b border-border">
         <div className="max-w-4xl mx-auto px-4 py-16 sm:py-24 text-center">
           <span className="inline-block text-[11px] font-medium uppercase tracking-[0.18em] text-success mb-5">
-            Coleção Seleções 2024/25
+            Coleções Seleções 2026 Copa do Mundo
           </span>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-deep leading-[1.05] text-balance mb-5">
             A camisa modelo jogador<br className="hidden sm:block" />
             <span className="text-success">tailandesa</span> mais desejada do momento
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-            Qualidade premium, caimento perfeito e preço acessível.
+            Modelos jogador com qualidade premium das principais seleções.
           </p>
           <button
             onClick={scrollToProducts}
