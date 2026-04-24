@@ -25,10 +25,10 @@ export function RecentPurchasePopup() {
         timeout = setTimeout(() => {
           setIndex((i) => (i + 1) % PURCHASES.length);
           cycle();
-        }, 1200);
-      }, 5000);
+        }, 12000);
+      }, 4500);
     };
-    const start = setTimeout(cycle, 4000);
+    const start = setTimeout(cycle, 8000);
     return () => {
       clearTimeout(start);
       clearTimeout(timeout);
