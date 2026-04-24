@@ -341,9 +341,12 @@ function ProductCard({ product }: { product: Product }) {
         <p className="text-[11px] text-muted-foreground uppercase tracking-wider mb-1">
           {product.flag} {product.team}
         </p>
-        <h4 className="font-medium text-sm text-foreground mb-2 line-clamp-1">
+        <h4 className="font-medium text-sm text-foreground mb-1 line-clamp-2 min-h-[2.5rem]">
           Camisa {product.model}
         </h4>
+        <p className="text-[11px] text-muted-foreground mb-3">
+          Modelo jogador • Tecido premium • Alta qualidade
+        </p>
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-base sm:text-lg font-bold text-deep">{formatBRL(product.price)}</span>
           <span className="text-xs text-muted-foreground line-through">{formatBRL(product.oldPrice)}</span>
