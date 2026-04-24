@@ -294,7 +294,7 @@ function StorePage() {
             <div>
               <p className="font-display text-sm mb-3">Atendimento</p>
               <ul className="space-y-1.5 text-xs opacity-80">
-                <li>contato@futclassics.com.br</li>
+                <li>contato@futfanaticos.com.br</li>
                 <li>WhatsApp: (11) 99999-9999</li>
                 <li>Seg a Sex · 9h às 18h</li>
               </ul>
