@@ -8,7 +8,10 @@ import {
   ChevronRight,
   Gift,
   ShoppingBag,
+  ShoppingCart,
 } from "lucide-react";
+import { toast } from "sonner";
+import { useCart } from "@/context/CartContext";
 
 import albumFifa from "@/assets/album-fifa-2026.png";
 import brasilHome from "@/assets/brasil-home.png";
@@ -106,13 +109,7 @@ function StorePage() {
             <a href="#oferta" className="hover:text-deep transition-colors">Promoções</a>
             <a href="#garantia" className="hover:text-deep transition-colors">Garantia</a>
           </nav>
-          <button
-            onClick={scrollToProducts}
-            className="inline-flex items-center gap-2 bg-deep text-deep-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary transition-colors"
-          >
-            <ShoppingBag className="w-4 h-4" />
-            <span className="hidden sm:inline">Loja</span>
-          </button>
+          <CartButton />
         </div>
       </header>
 
@@ -323,9 +320,52 @@ function StorePage() {
   );
 }
 
-function ProductCard({ product }: { product: Product }) {
+function CartButton() {
+  const { open, totalItems } = useCart();
   return (
-    <div className="group bg-card border border-border rounded-lg overflow-hidden hover:border-deep/30 hover:shadow-soft transition-all">
+    <button
+      onClick={open}
+      className="relative inline-flex items-center gap-2 bg-deep text-deep-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary transition-colors"
+      aria-label="Abrir carrinho"
+    >
+      <ShoppingCart className="w-4 h-4" />
+      <span className="hidden sm:inline">Carrinho</span>
+      {totalItems > 0 && (
+        <span className="absolute -top-1.5 -right-1.5 min-w-[20px] h-5 px-1 rounded-full bg-success text-success-foreground text-[11px] font-bold flex items-center justify-center">
+          {totalItems}
+        </span>
+      )}
+    </button>
+  );
+}
+
+function ProductCard({ product }: { product: Product }) {
+  const { addItem, open } = useCart();
+
+  const handleAdd = () => {
+    addItem({
+      id: product.id,
+      name: product.model,
+      team: product.team,
+      img: product.img,
+      price: product.price,
+    });
+    toast.success("Produto adicionado ao carrinho");
+  };
+
+  const handleBuyNow = () => {
+    addItem({
+      id: product.id,
+      name: product.model,
+      team: product.team,
+      img: product.img,
+      price: product.price,
+    });
+    open();
+  };
+
+  return (
+    <div className="group bg-card border border-border rounded-lg overflow-hidden hover:border-deep/30 hover:shadow-soft transition-all flex flex-col">
       <div className="aspect-square bg-muted/40 overflow-hidden relative">
         <img
           src={product.img}
@@ -337,12 +377,12 @@ function ProductCard({ product }: { product: Product }) {
           -50%
         </span>
       </div>
-      <div className="p-4">
+      <div className="p-4 flex flex-col flex-1">
         <p className="text-[11px] text-muted-foreground uppercase tracking-wider mb-1">
           {product.flag} {product.team}
         </p>
         <h4 className="font-medium text-sm text-foreground mb-1 line-clamp-2 min-h-[2.5rem]">
-          Camisa {product.model}
+          {product.model}
         </h4>
         <p className="text-[11px] text-muted-foreground mb-3">
           Modelo jogador • Tecido premium • Alta qualidade
@@ -351,9 +391,21 @@ function ProductCard({ product }: { product: Product }) {
           <span className="text-base sm:text-lg font-bold text-deep">{formatBRL(product.price)}</span>
           <span className="text-xs text-muted-foreground line-through">{formatBRL(product.oldPrice)}</span>
         </div>
-        <button className="w-full bg-deep text-deep-foreground py-2.5 rounded-md text-xs font-medium uppercase tracking-wider hover:bg-success transition-colors">
-          Comprar
-        </button>
+        <div className="mt-auto space-y-2">
+          <button
+            onClick={handleBuyNow}
+            className="w-full bg-deep text-deep-foreground py-2.5 rounded-md text-xs font-semibold uppercase tracking-wider hover:bg-success transition-colors"
+          >
+            Comprar agora
+          </button>
+          <button
+            onClick={handleAdd}
+            className="w-full border border-border bg-background text-foreground py-2.5 rounded-md text-xs font-medium uppercase tracking-wider hover:bg-muted transition-colors inline-flex items-center justify-center gap-1.5"
+          >
+            <ShoppingCart className="w-3.5 h-3.5" />
+            Adicionar ao carrinho
+          </button>
+        </div>
       </div>
     </div>
   );
