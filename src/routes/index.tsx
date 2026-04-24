@@ -285,10 +285,10 @@ function StorePage() {
           <div className="grid sm:grid-cols-3 gap-8 mb-8 text-sm">
             <div>
               <p className="font-display text-xl mb-2">
-                FUT<span className="text-gold">CLASSICS</span>
+                FUT<span className="text-gold">FANATICOS</span>
               </p>
               <p className="opacity-70 text-xs leading-relaxed">
-                Loja especializada em camisas modelo jogador das principais seleções do mundo.
+                Loja especializada em camisas modelo jogador das principais seleções para a Copa do Mundo 2026.
               </p>
             </div>
             <div>
