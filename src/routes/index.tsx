@@ -20,23 +20,24 @@ import francaAway from "@/assets/franca-away.png";
 import portugalHome from "@/assets/portugal-home.png";
 import portugalAway from "@/assets/portugal-away.png";
 import alemanhaHome from "@/assets/alemanha-home.png";
+import alemanhaAway from "@/assets/alemanha-away.png";
 
 import { RecentPurchasePopup } from "@/components/RecentPurchasePopup";
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "FutClassics — Camisas Modelo Jogador Tailandesas Premium" },
+      { title: "FutFanaticos — Camisas Modelo Jogador Copa 2026" },
       {
         name: "description",
         content:
-          "Loja oficial de camisas tailandesas modelo jogador das principais seleções. Brasil, Argentina, França, Portugal e Alemanha. Frete para todo Brasil.",
+          "Loja oficial de camisas modelo jogador das principais seleções para a Copa do Mundo 2026. Brasil, Argentina, França, Portugal e Alemanha. Frete para todo Brasil.",
       },
-      { property: "og:title", content: "FutClassics — Camisas das Seleções" },
+      { property: "og:title", content: "FutFanaticos — Camisas das Seleções Copa 2026" },
       {
         property: "og:description",
         content:
-          "Camisas modelo jogador premium. Qualidade, caimento perfeito e preço acessível.",
+          "Modelos jogador com qualidade premium das principais seleções. Caimento perfeito e preço acessível.",
       },
     ],
   }),
@@ -54,16 +55,16 @@ type Product = {
 };
 
 const PRODUCTS: Product[] = [
-  { id: "br-1", team: "Brasil", flag: "🇧🇷", model: "Home 2024", img: brasilHome, price: 99.9, oldPrice: 199.9 },
-  { id: "br-2", team: "Brasil", flag: "🇧🇷", model: "Away Pré-jogo", img: brasilAway, price: 99.9, oldPrice: 199.9 },
-  { id: "ar-1", team: "Argentina", flag: "🇦🇷", model: "Home 3 Estrelas", img: argentinaHome, price: 99.9, oldPrice: 199.9 },
-  { id: "ar-2", team: "Argentina", flag: "🇦🇷", model: "Away Edição Especial", img: argentinaAway, price: 99.9, oldPrice: 199.9 },
-  { id: "fr-1", team: "França", flag: "🇫🇷", model: "Pré-jogo Polo", img: francaHome, price: 99.9, oldPrice: 199.9 },
-  { id: "fr-2", team: "França", flag: "🇫🇷", model: "Away Mint", img: francaAway, price: 99.9, oldPrice: 199.9 },
-  { id: "pt-1", team: "Portugal", flag: "🇵🇹", model: "Home 2024", img: portugalHome, price: 99.9, oldPrice: 199.9 },
-  { id: "pt-2", team: "Portugal", flag: "🇵🇹", model: "Away Pré-jogo", img: portugalAway, price: 99.9, oldPrice: 199.9 },
-  { id: "de-1", team: "Alemanha", flag: "🇩🇪", model: "Retrô 1990", img: alemanhaHome, price: 99.9, oldPrice: 199.9 },
-  { id: "de-2", team: "Alemanha", flag: "🇩🇪", model: "Home Clássica", img: alemanhaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "br-1", team: "Brasil", flag: "🇧🇷", model: "Seleção Brasileira Modelo 1 Jogador", img: brasilHome, price: 99.9, oldPrice: 199.9 },
+  { id: "br-2", team: "Brasil", flag: "🇧🇷", model: "Seleção Brasileira Modelo 2 Jogador", img: brasilAway, price: 99.9, oldPrice: 199.9 },
+  { id: "ar-1", team: "Argentina", flag: "🇦🇷", model: "Seleção Argentina Modelo 1 Jogador", img: argentinaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "ar-2", team: "Argentina", flag: "🇦🇷", model: "Seleção Argentina Modelo 2 Jogador", img: argentinaAway, price: 99.9, oldPrice: 199.9 },
+  { id: "fr-1", team: "França", flag: "🇫🇷", model: "Seleção França Modelo 1 Jogador", img: francaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "fr-2", team: "França", flag: "🇫🇷", model: "Seleção França Modelo 2 Jogador", img: francaAway, price: 99.9, oldPrice: 199.9 },
+  { id: "pt-1", team: "Portugal", flag: "🇵🇹", model: "Seleção Portugal Modelo 1 Jogador", img: portugalHome, price: 99.9, oldPrice: 199.9 },
+  { id: "pt-2", team: "Portugal", flag: "🇵🇹", model: "Seleção Portugal Modelo 2 Jogador", img: portugalAway, price: 99.9, oldPrice: 199.9 },
+  { id: "de-1", team: "Alemanha", flag: "🇩🇪", model: "Seleção Alemanha Modelo 1 Jogador", img: alemanhaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "de-2", team: "Alemanha", flag: "🇩🇪", model: "Seleção Alemanha Modelo 2 Jogador", img: alemanhaAway, price: 99.9, oldPrice: 199.9 },
 ];
 
 const TEAM_ORDER = ["Brasil", "Argentina", "França", "Portugal", "Alemanha"];
@@ -98,7 +99,7 @@ function StorePage() {
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
         <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
           <a href="/" className="font-display text-2xl tracking-wide text-deep">
-            FUT<span className="text-success">CLASSICS</span>
+            FUT<span className="text-success">FANATICOS</span>
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm text-foreground/80">
             <button onClick={scrollToProducts} className="hover:text-deep transition-colors">Produtos</button>
@@ -119,14 +120,14 @@ function StorePage() {
       <section className="relative bg-gradient-to-b from-background to-muted/40 border-b border-border">
         <div className="max-w-4xl mx-auto px-4 py-16 sm:py-24 text-center">
           <span className="inline-block text-[11px] font-medium uppercase tracking-[0.18em] text-success mb-5">
-            Coleção Seleções 2024/25
+            Coleções Seleções 2026 Copa do Mundo
           </span>
           <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-deep leading-[1.05] text-balance mb-5">
             A camisa modelo jogador<br className="hidden sm:block" />
             <span className="text-success">tailandesa</span> mais desejada do momento
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto mb-8">
-            Qualidade premium, caimento perfeito e preço acessível.
+            Modelos jogador com qualidade premium das principais seleções.
           </p>
           <button
             onClick={scrollToProducts}
@@ -284,16 +285,16 @@ function StorePage() {
           <div className="grid sm:grid-cols-3 gap-8 mb-8 text-sm">
             <div>
               <p className="font-display text-xl mb-2">
-                FUT<span className="text-gold">CLASSICS</span>
+                FUT<span className="text-gold">FANATICOS</span>
               </p>
               <p className="opacity-70 text-xs leading-relaxed">
-                Loja especializada em camisas modelo jogador das principais seleções do mundo.
+                Loja especializada em camisas modelo jogador das principais seleções para a Copa do Mundo 2026.
               </p>
             </div>
             <div>
               <p className="font-display text-sm mb-3">Atendimento</p>
               <ul className="space-y-1.5 text-xs opacity-80">
-                <li>contato@futclassics.com.br</li>
+                <li>contato@futfanaticos.com.br</li>
                 <li>WhatsApp: (11) 99999-9999</li>
                 <li>Seg a Sex · 9h às 18h</li>
               </ul>
@@ -312,7 +313,7 @@ function StorePage() {
               Aviso legal: produto não oficial, inspirado em camisas de seleções de futebol.
               Marcas e escudos pertencem aos seus respectivos proprietários.
             </p>
-            <p>© {new Date().getFullYear()} FutClassics · CNPJ 00.000.000/0001-00</p>
+            <p>© {new Date().getFullYear()} FutFanaticos · CNPJ 00.000.000/0001-00</p>
           </div>
         </div>
       </footer>
@@ -340,9 +341,12 @@ function ProductCard({ product }: { product: Product }) {
         <p className="text-[11px] text-muted-foreground uppercase tracking-wider mb-1">
           {product.flag} {product.team}
         </p>
-        <h4 className="font-medium text-sm text-foreground mb-2 line-clamp-1">
+        <h4 className="font-medium text-sm text-foreground mb-1 line-clamp-2 min-h-[2.5rem]">
           Camisa {product.model}
         </h4>
+        <p className="text-[11px] text-muted-foreground mb-3">
+          Modelo jogador • Tecido premium • Alta qualidade
+        </p>
         <div className="flex items-baseline gap-2 mb-3">
           <span className="text-base sm:text-lg font-bold text-deep">{formatBRL(product.price)}</span>
           <span className="text-xs text-muted-foreground line-through">{formatBRL(product.oldPrice)}</span>

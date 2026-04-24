@@ -29,10 +29,10 @@ export const Route = createRootRoute({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Camisas Modelo Jogador — Seleções Premium | FutClassics" },
-      { name: "description", content: "Camisas tailandesas premium das principais seleções por R$ 99,90. Compre 2 e ganhe um álbum da Copa + 5 pacotes de figurinhas. Frete para todo o Brasil." },
+      { title: "FutFanaticos — Camisas Modelo Jogador Copa 2026" },
+      { name: "description", content: "Camisas modelo jogador das seleções para a Copa do Mundo 2026. Brasil, Argentina, França, Portugal e Alemanha. Qualidade premium e frete para todo o Brasil." },
       { name: "theme-color", content: "#1b2a52" },
-      { property: "og:title", content: "Camisas Modelo Jogador — Seleções Premium" },
+      { property: "og:title", content: "FutFanaticos — Camisas Modelo Jogador Copa 2026" },
       { property: "og:description", content: "Qualidade premium usada pelos jogadores por preço acessível. Compre 2 e ganhe brindes." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
