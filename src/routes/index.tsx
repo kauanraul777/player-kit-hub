@@ -55,16 +55,16 @@ type Product = {
 };
 
 const PRODUCTS: Product[] = [
-  { id: "br-1", team: "Brasil", flag: "🇧🇷", model: "Home 2024", img: brasilHome, price: 99.9, oldPrice: 199.9 },
-  { id: "br-2", team: "Brasil", flag: "🇧🇷", model: "Away Pré-jogo", img: brasilAway, price: 99.9, oldPrice: 199.9 },
-  { id: "ar-1", team: "Argentina", flag: "🇦🇷", model: "Home 3 Estrelas", img: argentinaHome, price: 99.9, oldPrice: 199.9 },
-  { id: "ar-2", team: "Argentina", flag: "🇦🇷", model: "Away Edição Especial", img: argentinaAway, price: 99.9, oldPrice: 199.9 },
-  { id: "fr-1", team: "França", flag: "🇫🇷", model: "Pré-jogo Polo", img: francaHome, price: 99.9, oldPrice: 199.9 },
-  { id: "fr-2", team: "França", flag: "🇫🇷", model: "Away Mint", img: francaAway, price: 99.9, oldPrice: 199.9 },
-  { id: "pt-1", team: "Portugal", flag: "🇵🇹", model: "Home 2024", img: portugalHome, price: 99.9, oldPrice: 199.9 },
-  { id: "pt-2", team: "Portugal", flag: "🇵🇹", model: "Away Pré-jogo", img: portugalAway, price: 99.9, oldPrice: 199.9 },
-  { id: "de-1", team: "Alemanha", flag: "🇩🇪", model: "Retrô 1990", img: alemanhaHome, price: 99.9, oldPrice: 199.9 },
-  { id: "de-2", team: "Alemanha", flag: "🇩🇪", model: "Home Clássica", img: alemanhaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "br-1", team: "Brasil", flag: "🇧🇷", model: "Seleção Brasileira Modelo 1 Jogador", img: brasilHome, price: 99.9, oldPrice: 199.9 },
+  { id: "br-2", team: "Brasil", flag: "🇧🇷", model: "Seleção Brasileira Modelo 2 Jogador", img: brasilAway, price: 99.9, oldPrice: 199.9 },
+  { id: "ar-1", team: "Argentina", flag: "🇦🇷", model: "Seleção Argentina Modelo 1 Jogador", img: argentinaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "ar-2", team: "Argentina", flag: "🇦🇷", model: "Seleção Argentina Modelo 2 Jogador", img: argentinaAway, price: 99.9, oldPrice: 199.9 },
+  { id: "fr-1", team: "França", flag: "🇫🇷", model: "Seleção França Modelo 1 Jogador", img: francaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "fr-2", team: "França", flag: "🇫🇷", model: "Seleção França Modelo 2 Jogador", img: francaAway, price: 99.9, oldPrice: 199.9 },
+  { id: "pt-1", team: "Portugal", flag: "🇵🇹", model: "Seleção Portugal Modelo 1 Jogador", img: portugalHome, price: 99.9, oldPrice: 199.9 },
+  { id: "pt-2", team: "Portugal", flag: "🇵🇹", model: "Seleção Portugal Modelo 2 Jogador", img: portugalAway, price: 99.9, oldPrice: 199.9 },
+  { id: "de-1", team: "Alemanha", flag: "🇩🇪", model: "Seleção Alemanha Modelo 1 Jogador", img: alemanhaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "de-2", team: "Alemanha", flag: "🇩🇪", model: "Seleção Alemanha Modelo 2 Jogador", img: alemanhaAway, price: 99.9, oldPrice: 199.9 },
 ];
 
 const TEAM_ORDER = ["Brasil", "Argentina", "França", "Portugal", "Alemanha"];
