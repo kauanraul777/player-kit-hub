@@ -97,10 +97,24 @@ function formatBRL(v: number) {
 
 function StorePage() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [page, setPage] = useState(1);
+  const TEAMS_PER_PAGE = 4;
+  const totalPages = Math.ceil(TEAM_ORDER.length / TEAMS_PER_PAGE);
+  const visibleTeams = TEAM_ORDER.slice(
+    (page - 1) * TEAMS_PER_PAGE,
+    page * TEAMS_PER_PAGE,
+  );
 
   const handleNavClick = (action: () => void) => {
     setMobileMenuOpen(false);
     action();
+  };
+
+  const goToPage = (n: number) => {
+    setPage(n);
+    requestAnimationFrame(() => {
+      document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" });
+    });
   };
 
   return (
