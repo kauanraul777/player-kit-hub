@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   Shield,
   Truck,
@@ -7,8 +8,9 @@ import {
   Check,
   ChevronRight,
   Gift,
-  ShoppingBag,
   ShoppingCart,
+  Menu,
+  X,
 } from "lucide-react";
 import { toast } from "sonner";
 import { useCart } from "@/context/CartContext";
@@ -24,6 +26,12 @@ import portugalHome from "@/assets/portugal-home.png";
 import portugalAway from "@/assets/portugal-away.png";
 import alemanhaHome from "@/assets/alemanha-home.png";
 import alemanhaAway from "@/assets/alemanha-away.png";
+import holandaHome from "@/assets/holanda-home.png";
+import holandaAway from "@/assets/holanda-away.png";
+import espanhaHome from "@/assets/espanha-home.png";
+import espanhaAway from "@/assets/espanha-away.png";
+import inglaterraHome from "@/assets/inglaterra-home.png";
+import inglaterraAway from "@/assets/inglaterra-away.png";
 
 import { RecentPurchasePopup } from "@/components/RecentPurchasePopup";
 
@@ -34,7 +42,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Loja oficial de camisas modelo jogador das principais seleções para a Copa do Mundo 2026. Brasil, Argentina, França, Portugal e Alemanha. Frete para todo Brasil.",
+          "Loja oficial de camisas modelo jogador das principais seleções para a Copa do Mundo 2026. Brasil, Argentina, França, Portugal, Alemanha, Holanda, Espanha e Inglaterra.",
       },
       { property: "og:title", content: "FutFanaticos — Camisas das Seleções Copa 2026" },
       {
@@ -68,9 +76,15 @@ const PRODUCTS: Product[] = [
   { id: "pt-2", team: "Portugal", flag: "🇵🇹", model: "Seleção Portugal Modelo 2 Jogador", img: portugalAway, price: 99.9, oldPrice: 199.9 },
   { id: "de-1", team: "Alemanha", flag: "🇩🇪", model: "Seleção Alemanha Modelo 1 Jogador", img: alemanhaHome, price: 99.9, oldPrice: 199.9 },
   { id: "de-2", team: "Alemanha", flag: "🇩🇪", model: "Seleção Alemanha Modelo 2 Jogador", img: alemanhaAway, price: 99.9, oldPrice: 199.9 },
+  { id: "nl-1", team: "Holanda", flag: "🇳🇱", model: "Seleção Holanda Modelo 1 Jogador", img: holandaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "nl-2", team: "Holanda", flag: "🇳🇱", model: "Seleção Holanda Modelo 2 Jogador", img: holandaAway, price: 99.9, oldPrice: 199.9 },
+  { id: "es-1", team: "Espanha", flag: "🇪🇸", model: "Seleção Espanha Modelo 1 Jogador", img: espanhaHome, price: 99.9, oldPrice: 199.9 },
+  { id: "es-2", team: "Espanha", flag: "🇪🇸", model: "Seleção Espanha Modelo 2 Jogador", img: espanhaAway, price: 99.9, oldPrice: 199.9 },
+  { id: "en-1", team: "Inglaterra", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", model: "Seleção Inglaterra Modelo 1 Jogador", img: inglaterraHome, price: 99.9, oldPrice: 199.9 },
+  { id: "en-2", team: "Inglaterra", flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", model: "Seleção Inglaterra Modelo 2 Jogador", img: inglaterraAway, price: 99.9, oldPrice: 199.9 },
 ];
 
-const TEAM_ORDER = ["Brasil", "Argentina", "França", "Portugal", "Alemanha"];
+const TEAM_ORDER = ["Brasil", "Argentina", "França", "Portugal", "Alemanha", "Holanda", "Espanha", "Inglaterra"];
 
 function scrollToProducts() {
   document.getElementById("produtos")?.scrollIntoView({ behavior: "smooth" });
@@ -81,27 +95,34 @@ function formatBRL(v: number) {
 }
 
 function StorePage() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const handleNavClick = (action: () => void) => {
+    setMobileMenuOpen(false);
+    action();
+  };
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* TRUST BAR */}
       <div className="bg-deep text-deep-foreground text-[11px] sm:text-xs">
-        <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-center gap-4 sm:gap-8 flex-wrap">
+        <div className="max-w-6xl mx-auto px-4 py-2 flex items-center justify-center gap-3 sm:gap-8 flex-wrap">
           <span className="flex items-center gap-1.5 opacity-90">
-            <Truck className="w-3.5 h-3.5" /> Frete para todo Brasil
+            <Truck className="w-3.5 h-3.5" /> Frete Brasil
           </span>
           <span className="flex items-center gap-1.5 opacity-90">
             <Lock className="w-3.5 h-3.5" /> Pagamento seguro
           </span>
           <span className="flex items-center gap-1.5 opacity-90">
-            <Shield className="w-3.5 h-3.5" /> 7 dias de garantia
+            <Shield className="w-3.5 h-3.5" /> 7 dias garantia
           </span>
         </div>
       </div>
 
       {/* HEADER */}
       <header className="sticky top-0 z-40 bg-background/95 backdrop-blur border-b border-border">
-        <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between">
-          <a href="/" className="font-display text-2xl tracking-wide text-deep">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between gap-3">
+          <a href="/" className="font-display text-lg sm:text-2xl tracking-wide text-deep flex-shrink-0">
             FUT<span className="text-success">FANATICOS</span>
           </a>
           <nav className="hidden md:flex items-center gap-7 text-sm text-foreground/80">
@@ -109,36 +130,72 @@ function StorePage() {
             <a href="#oferta" className="hover:text-deep transition-colors">Promoções</a>
             <a href="#garantia" className="hover:text-deep transition-colors">Garantia</a>
           </nav>
-          <CartButton />
+          <div className="flex items-center gap-2">
+            <CartButton />
+            <button
+              onClick={() => setMobileMenuOpen((v) => !v)}
+              className="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-deep hover:bg-muted transition-colors"
+              aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
+        {/* MOBILE NAV */}
+        {mobileMenuOpen && (
+          <nav className="md:hidden border-t border-border bg-background">
+            <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col gap-1 text-sm">
+              <button
+                onClick={() => handleNavClick(scrollToProducts)}
+                className="text-left px-3 py-3 rounded-md hover:bg-muted text-foreground/85"
+              >
+                Produtos
+              </button>
+              <a
+                href="#oferta"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-3 rounded-md hover:bg-muted text-foreground/85"
+              >
+                Promoções
+              </a>
+              <a
+                href="#garantia"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-3 py-3 rounded-md hover:bg-muted text-foreground/85"
+              >
+                Garantia
+              </a>
+            </div>
+          </nav>
+        )}
       </header>
 
-      {/* HERO — clean */}
+      {/* HERO */}
       <section className="relative bg-gradient-to-b from-background to-muted/40 border-b border-border">
-        <div className="max-w-4xl mx-auto px-4 py-16 sm:py-24 text-center">
-          <span className="inline-block text-[11px] font-medium uppercase tracking-[0.18em] text-success mb-5">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 py-12 sm:py-20 lg:py-24 text-center">
+          <span className="inline-block text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.18em] text-success mb-4 sm:mb-5">
             Coleções Seleções 2026 Copa do Mundo
           </span>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-deep leading-[1.05] text-balance mb-5">
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl text-deep leading-[1.1] text-balance mb-4 sm:mb-5">
             A camisa modelo jogador<br className="hidden sm:block" />
             <span className="text-success">tailandesa</span> mais desejada do momento
           </h1>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto mb-8">
+          <p className="text-sm sm:text-lg text-muted-foreground max-w-xl mx-auto mb-7 sm:mb-8 px-2">
             Modelos jogador com qualidade premium das principais seleções.
           </p>
           <button
             onClick={scrollToProducts}
-            className="inline-flex items-center gap-2 bg-deep text-deep-foreground px-8 py-3.5 rounded-md font-medium text-sm tracking-wide uppercase hover:bg-primary transition-colors"
+            className="inline-flex items-center gap-2 bg-deep text-deep-foreground px-7 sm:px-8 py-3 sm:py-3.5 rounded-md font-medium text-sm tracking-wide uppercase hover:bg-primary transition-colors active:scale-[0.98]"
           >
             Ver modelos
             <ChevronRight className="w-4 h-4" />
           </button>
 
           {/* small jersey strip */}
-          <div className="mt-12 grid grid-cols-5 gap-3 sm:gap-6 max-w-2xl mx-auto opacity-90">
+          <div className="mt-10 sm:mt-12 grid grid-cols-5 gap-2 sm:gap-6 max-w-2xl mx-auto opacity-90">
             {[brasilHome, argentinaHome, francaHome, portugalHome, alemanhaHome].map((src, i) => (
               <div key={i} className="aspect-square rounded-lg bg-card border border-border overflow-hidden">
-                <img src={src} alt="" loading="lazy" className="w-full h-full object-contain p-2" />
+                <img src={src} alt="" loading="lazy" className="w-full h-full object-contain p-1.5 sm:p-2" />
               </div>
             ))}
           </div>
@@ -146,26 +203,26 @@ function StorePage() {
       </section>
 
       {/* PRODUTOS */}
-      <section id="produtos" className="py-16 sm:py-20 px-4">
+      <section id="produtos" className="py-12 sm:py-20 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="flex items-end justify-between mb-10 flex-wrap gap-3">
+          <div className="flex items-end justify-between mb-8 sm:mb-10 flex-wrap gap-3">
             <div>
-              <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-success mb-2">Catálogo</p>
-              <h2 className="font-display text-3xl sm:text-4xl text-deep">Todas as seleções</h2>
+              <p className="text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.18em] text-success mb-1.5 sm:mb-2">Catálogo</p>
+              <h2 className="font-display text-2xl sm:text-4xl text-deep">Todas as seleções</h2>
             </div>
-            <p className="text-sm text-muted-foreground">
-              {PRODUCTS.length} modelos disponíveis · Tamanhos P ao GG
+            <p className="text-xs sm:text-sm text-muted-foreground">
+              {PRODUCTS.length} modelos · Tamanhos P ao GG
             </p>
           </div>
 
           {TEAM_ORDER.map((team) => {
             const items = PRODUCTS.filter((p) => p.team === team);
             return (
-              <div key={team} className="mb-12 last:mb-0">
-                <h3 className="font-display text-xl text-deep mb-5 flex items-center gap-2">
+              <div key={team} className="mb-10 sm:mb-12 last:mb-0">
+                <h3 className="font-display text-lg sm:text-xl text-deep mb-4 sm:mb-5 flex items-center gap-2">
                   <span>{items[0]?.flag}</span> {team}
                 </h3>
-                <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                   {items.map((p) => (
                     <ProductCard key={p.id} product={p} />
                   ))}
@@ -176,27 +233,27 @@ function StorePage() {
         </div>
       </section>
 
-      {/* OFERTA — discreta */}
-      <section id="oferta" className="bg-muted/40 border-y border-border py-14 px-4">
+      {/* OFERTA */}
+      <section id="oferta" className="bg-muted/40 border-y border-border py-12 sm:py-14 px-4 sm:px-6">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-card border border-border rounded-xl p-6 sm:p-8 flex items-center gap-5 sm:gap-8 flex-col sm:flex-row">
+          <div className="bg-card border border-border rounded-xl p-5 sm:p-8 flex items-center gap-5 sm:gap-8 flex-col sm:flex-row">
             <div className="w-24 h-24 sm:w-28 sm:h-28 flex-shrink-0 rounded-lg bg-muted overflow-hidden">
               <img src={albumFifa} alt="Álbum FIFA World Cup 2026" className="w-full h-full object-contain p-1" />
             </div>
             <div className="flex-1 text-center sm:text-left">
-              <span className="inline-flex items-center gap-1.5 bg-gold/15 text-deep border border-gold/40 px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wider mb-2">
+              <span className="inline-flex items-center gap-1.5 bg-gold/15 text-deep border border-gold/40 px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider mb-2">
                 <Gift className="w-3 h-3" /> Brinde especial
               </span>
-              <h3 className="font-display text-xl sm:text-2xl text-deep mb-1.5 leading-tight">
+              <h3 className="font-display text-lg sm:text-2xl text-deep mb-1.5 leading-tight">
                 Compre 2 camisas e ganhe um álbum + 5 pacotes de figurinhas
               </h3>
-              <p className="text-sm text-muted-foreground">
+              <p className="text-xs sm:text-sm text-muted-foreground">
                 Brinde adicionado automaticamente ao carrinho. Promoção por tempo limitado.
               </p>
             </div>
             <button
               onClick={scrollToProducts}
-              className="bg-deep text-deep-foreground px-6 py-3 rounded-md font-medium text-sm uppercase tracking-wide hover:bg-primary transition-colors w-full sm:w-auto"
+              className="bg-deep text-deep-foreground px-6 py-3 rounded-md font-medium text-sm uppercase tracking-wide hover:bg-primary transition-colors active:scale-[0.98] w-full sm:w-auto"
             >
               Aproveitar
             </button>
@@ -205,7 +262,7 @@ function StorePage() {
       </section>
 
       {/* DIFERENCIAIS */}
-      <section className="py-14 px-4">
+      <section className="py-12 sm:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {[
             { icon: Truck, title: "Frete Brasil", desc: "Enviamos para todo o país" },
@@ -225,17 +282,17 @@ function StorePage() {
       </section>
 
       {/* AVALIAÇÕES */}
-      <section className="bg-muted/30 border-y border-border py-14 px-4">
+      <section className="bg-muted/30 border-y border-border py-12 sm:py-14 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-10">
+          <div className="text-center mb-8 sm:mb-10">
             <div className="flex items-center justify-center gap-1 mb-2">
               {[1, 2, 3, 4, 5].map((i) => (
                 <Star key={i} className="w-4 h-4 fill-gold text-gold" />
               ))}
             </div>
-            <h2 className="font-display text-2xl sm:text-3xl text-deep">4.9 / 5 — milhares de torcedores</h2>
+            <h2 className="font-display text-xl sm:text-3xl text-deep px-2">4.9 / 5 — milhares de torcedores</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               { name: "Carlos M.", text: "Qualidade absurda, parece original. Costuras impecáveis." },
               { name: "Ricardo S.", text: "Comprei 2 e ainda ganhei o álbum. Meu filho amou." },
@@ -261,12 +318,12 @@ function StorePage() {
       </section>
 
       {/* GARANTIA */}
-      <section id="garantia" className="py-16 px-4">
+      <section id="garantia" className="py-14 sm:py-16 px-4 sm:px-6">
         <div className="max-w-3xl mx-auto text-center">
           <div className="inline-flex w-14 h-14 rounded-full bg-success/10 items-center justify-center mb-4">
             <Shield className="w-7 h-7 text-success" />
           </div>
-          <h2 className="font-display text-2xl sm:text-3xl text-deep mb-3">
+          <h2 className="font-display text-xl sm:text-3xl text-deep mb-3">
             7 dias de garantia ou seu dinheiro de volta
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto text-sm">
@@ -277,9 +334,9 @@ function StorePage() {
       </section>
 
       {/* FOOTER */}
-      <footer className="bg-deep text-deep-foreground py-10 px-4">
+      <footer className="bg-deep text-deep-foreground py-10 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <div className="grid sm:grid-cols-3 gap-8 mb-8 text-sm">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 mb-8 text-sm">
             <div>
               <p className="font-display text-xl mb-2">
                 FUT<span className="text-gold">FANATICOS</span>
@@ -325,7 +382,7 @@ function CartButton() {
   return (
     <button
       onClick={open}
-      className="relative inline-flex items-center gap-2 bg-deep text-deep-foreground px-4 py-2 rounded-md text-sm font-medium hover:bg-primary transition-colors"
+      className="relative inline-flex items-center gap-2 bg-deep text-deep-foreground px-3 sm:px-4 py-2 rounded-md text-sm font-medium hover:bg-primary transition-colors active:scale-[0.98]"
       aria-label="Abrir carrinho"
     >
       <ShoppingCart className="w-4 h-4" />
@@ -394,13 +451,13 @@ function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto space-y-2">
           <button
             onClick={handleBuyNow}
-            className="w-full bg-deep text-deep-foreground py-2.5 rounded-md text-xs font-semibold uppercase tracking-wider hover:bg-success transition-colors"
+            className="w-full bg-deep text-deep-foreground py-3 rounded-md text-xs font-semibold uppercase tracking-wider hover:bg-success transition-colors active:scale-[0.98]"
           >
             Comprar agora
           </button>
           <button
             onClick={handleAdd}
-            className="w-full border border-border bg-background text-foreground py-2.5 rounded-md text-xs font-medium uppercase tracking-wider hover:bg-muted transition-colors inline-flex items-center justify-center gap-1.5"
+            className="w-full border border-border bg-background text-foreground py-3 rounded-md text-xs font-medium uppercase tracking-wider hover:bg-muted transition-colors active:scale-[0.98] inline-flex items-center justify-center gap-1.5"
           >
             <ShoppingCart className="w-3.5 h-3.5" />
             Adicionar ao carrinho
