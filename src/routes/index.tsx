@@ -7,6 +7,7 @@ import {
   Star,
   Check,
   ChevronRight,
+  ChevronLeft,
   Gift,
   ShoppingCart,
   Menu,
