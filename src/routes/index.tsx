@@ -328,7 +328,7 @@ function StorePage() {
         <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {[
             { icon: Truck, title: "Frete Brasil", desc: "Enviamos para todo o país" },
-            { icon: Lock, title: "Pagamento seguro", desc: "Pix, cartão e boleto" },
+            { icon: Lock, title: "Pagamento seguro", desc: "Pix e cartão de crédito" },
             { icon: Shield, title: "7 dias de garantia", desc: "Devolução facilitada" },
             { icon: Check, title: "Modelo jogador", desc: "Tecido dry-fit premium" },
           ].map((f) => (
@@ -410,15 +410,15 @@ function StorePage() {
             <div>
               <p className="font-display text-sm mb-3">Atendimento</p>
               <ul className="space-y-1.5 text-xs opacity-80">
-                <li>contato@futfanaticos.com.br</li>
-                <li>WhatsApp: (11) 99999-9999</li>
+                <li>contato@futfanatics.com.br</li>
+                <li>WhatsApp: (11) 97687-0056</li>
                 <li>Seg a Sex · 9h às 18h</li>
               </ul>
             </div>
             <div>
               <p className="font-display text-sm mb-3">Pagamento e entrega</p>
               <ul className="space-y-1.5 text-xs opacity-80">
-                <li>Pix, Cartão (até 12x), Boleto</li>
+                <li>Pix e Cartão de crédito</li>
                 <li>Frete para todo Brasil</li>
                 <li>Entrega rastreada</li>
               </ul>
@@ -429,7 +429,7 @@ function StorePage() {
               Aviso legal: produto não oficial, inspirado em camisas de seleções de futebol.
               Marcas e escudos pertencem aos seus respectivos proprietários.
             </p>
-            <p>© {new Date().getFullYear()} FutFanaticos · CNPJ 00.000.000/0001-00</p>
+            <p>© {new Date().getFullYear()} FutFanaticos · CNPJ 05.328.923/0001-90</p>
           </div>
         </div>
       </footer>
@@ -469,7 +469,12 @@ function ProductCard({ product }: { product: Product }) {
       img: product.img,
       price: product.price,
     });
-    toast.success("Produto adicionado ao carrinho");
+    toast.success("Produto adicionado ao carrinho", {
+      action: {
+        label: "Ir para o carrinho",
+        onClick: () => open(),
+      },
+    });
   };
 
   const handleBuyNow = () => {

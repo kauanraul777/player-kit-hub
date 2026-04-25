@@ -3,6 +3,7 @@ import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/r
 import appCss from "../styles.css?url";
 import { CartProvider } from "@/context/CartContext";
 import { CartSheet } from "@/components/CartSheet";
+import { FloatingCartButton } from "@/components/FloatingCartButton";
 import { Toaster } from "@/components/ui/sonner";
 
 function NotFoundComponent() {
@@ -78,6 +79,7 @@ function RootComponent() {
     <CartProvider>
       <Outlet />
       <CartSheet />
+      <FloatingCartButton />
       <Toaster position="top-center" richColors />
     </CartProvider>
   );
