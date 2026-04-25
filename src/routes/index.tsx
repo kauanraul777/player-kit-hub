@@ -227,11 +227,11 @@ function StorePage() {
               <h2 className="font-display text-2xl sm:text-4xl text-deep">Todas as seleções</h2>
             </div>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              {PRODUCTS.length} modelos · Tamanhos P ao GG
+              Página {page} de {totalPages} · {PRODUCTS.length} modelos · P ao GG
             </p>
           </div>
 
-          {TEAM_ORDER.map((team) => {
+          {visibleTeams.map((team) => {
             const items = PRODUCTS.filter((p) => p.team === team);
             return (
               <div key={team} className="mb-10 sm:mb-12 last:mb-0">
@@ -246,6 +246,52 @@ function StorePage() {
               </div>
             );
           })}
+
+          {/* PAGINAÇÃO */}
+          <div className="mt-10 sm:mt-14 flex flex-col items-center gap-4">
+            {page < totalPages && (
+              <button
+                onClick={() => goToPage(page + 1)}
+                className="inline-flex items-center gap-2 bg-deep text-deep-foreground px-7 py-3 rounded-md font-medium text-sm uppercase tracking-wide hover:bg-primary transition-colors active:scale-[0.98] w-full sm:w-auto justify-center"
+              >
+                Ver mais produtos
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            )}
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => goToPage(Math.max(1, page - 1))}
+                disabled={page === 1}
+                aria-label="Página anterior"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-deep hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-4 h-4" />
+              </button>
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((n) => (
+                <button
+                  key={n}
+                  onClick={() => goToPage(n)}
+                  aria-label={`Página ${n}`}
+                  aria-current={page === n ? "page" : undefined}
+                  className={`w-10 h-10 rounded-md text-sm font-semibold transition-colors ${
+                    page === n
+                      ? "bg-deep text-deep-foreground"
+                      : "border border-border text-deep hover:bg-muted"
+                  }`}
+                >
+                  {n}
+                </button>
+              ))}
+              <button
+                onClick={() => goToPage(Math.min(totalPages, page + 1))}
+                disabled={page === totalPages}
+                aria-label="Próxima página"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-md border border-border text-deep hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 
