@@ -177,11 +177,12 @@ function StorePage() {
           <span className="inline-block text-[10px] sm:text-[11px] font-medium uppercase tracking-[0.18em] text-success mb-4 sm:mb-5">
             Coleções Seleções 2026 Copa do Mundo
           </span>
-          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl text-deep leading-[1.1] text-balance mb-4 sm:mb-5">
-            A camisa modelo jogador<br className="hidden sm:block" />
-            <span className="text-success">tailandesa</span> mais desejada do momento
+          <h1 className="font-display text-3xl sm:text-5xl lg:text-6xl text-deep leading-[1.15] sm:leading-[1.1] text-balance mb-4 sm:mb-5 px-2 break-words">
+            Camisa modelo jogador,<br className="hidden sm:block" />{" "}
+            <span className="text-success">malha tailandesa</span>{" "}
+            mais desejada do momento
           </h1>
-          <p className="text-sm sm:text-lg text-muted-foreground max-w-xl mx-auto mb-7 sm:mb-8 px-2">
+          <p className="text-sm sm:text-lg text-muted-foreground max-w-xl mx-auto mb-7 sm:mb-8 px-2 leading-relaxed">
             Modelos jogador com qualidade premium das principais seleções.
           </p>
           <button
